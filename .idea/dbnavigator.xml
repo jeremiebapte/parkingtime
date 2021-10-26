@@ -24,14 +24,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="0552e394-2ad6-41ad-8acd-b07100f798bb">
-        <schema name="information_schema" object-types="table, function" />
-        <schema name="mysql" object-types="table, function" />
-        <schema name="prod" object-types="table, function" />
-        <schema name="test" object-types="table, function" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="0552e394-2ad6-41ad-8acd-b07100f798bb">
@@ -43,6 +36,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="0552e394-2ad6-41ad-8acd-b07100f798bb" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="0552e394-2ad6-41ad-8acd-b07100f798bb" dataset="prod.ticket" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
