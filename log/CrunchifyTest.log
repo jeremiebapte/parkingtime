@@ -1152,3 +1152,59 @@ java.lang.Exception: Error fetching parking number from DB. Parking slots might 
 2021-10-20 16:12:51 [main] INFO  DataBaseConfig:13 - Create DB connection
 2021-10-20 16:12:51 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
 2021-10-20 16:12:51 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:29:56 [main] INFO  App:10 - Initializing Parking System
+2021-10-27 15:29:56 [main] INFO  InteractiveShell:14 - App initialized!!!
+2021-10-27 15:30:04 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:30:06 [main] INFO  DataBaseConfig:47 - Closing Result Set
+2021-10-27 15:30:06 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:30:06 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:30:09 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:30:10 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:30:10 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:30:10 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:30:10 [main] ERROR TicketDAO:37 - Error fetching next available slot
+java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.getHour()" because the return value of "com.parkit.parkingsystem.model.Ticket.getInTime()" is null
+	at com.parkit.parkingsystem.dao.TicketDAO.saveTicket(TicketDAO.java:33) [classes/:?]
+	at com.parkit.parkingsystem.service.ParkingService.processIncomingVehicle(ParkingService.java:48) [classes/:?]
+	at com.parkit.parkingsystem.service.InteractiveShell.loadInterface(InteractiveShell.java:28) [classes/:?]
+	at com.parkit.parkingsystem.App.main(App.java:11) [classes/:?]
+2021-10-27 15:30:10 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:30:15 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:30:15 [main] INFO  DataBaseConfig:47 - Closing Result Set
+2021-10-27 15:30:15 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:30:15 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:30:15 [main] ERROR ParkingService:118 - Unable to process exiting vehicle
+java.lang.NullPointerException: Cannot invoke "java.time.LocalDateTime.toString()" because the return value of "com.parkit.parkingsystem.model.Ticket.getOutTime()" is null
+	at com.parkit.parkingsystem.service.FareCalculatorService.calculateFare(FareCalculatorService.java:11) ~[classes/:?]
+	at com.parkit.parkingsystem.service.ParkingService.processExitingVehicle(ParkingService.java:107) [classes/:?]
+	at com.parkit.parkingsystem.service.InteractiveShell.loadInterface(InteractiveShell.java:32) [classes/:?]
+	at com.parkit.parkingsystem.App.main(App.java:11) [classes/:?]
+2021-10-27 15:46:28 [main] INFO  App:10 - Initializing Parking System
+2021-10-27 15:46:28 [main] INFO  InteractiveShell:14 - App initialized!!!
+2021-10-27 15:46:31 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:46:32 [main] INFO  DataBaseConfig:47 - Closing Result Set
+2021-10-27 15:46:32 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:46:32 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:46:32 [main] ERROR ParkingService:77 - Error fetching next available parking slot
+java.lang.Exception: Error fetching parking number from DB. Parking slots might be full
+	at com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable(ParkingService.java:72) [classes/:?]
+	at com.parkit.parkingsystem.service.ParkingService.processIncomingVehicle(ParkingService.java:33) [classes/:?]
+	at com.parkit.parkingsystem.service.InteractiveShell.loadInterface(InteractiveShell.java:28) [classes/:?]
+	at com.parkit.parkingsystem.App.main(App.java:11) [classes/:?]
+2021-10-27 15:46:35 [main] ERROR InputReaderUtil:18 - Error while reading user input from Shell
+java.lang.NumberFormatException: For input string: "ABAB"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:660) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:778) ~[?:?]
+	at com.parkit.parkingsystem.util.InputReaderUtil.readSelection(InputReaderUtil.java:15) [classes/:?]
+	at com.parkit.parkingsystem.service.InteractiveShell.loadInterface(InteractiveShell.java:25) [classes/:?]
+	at com.parkit.parkingsystem.App.main(App.java:11) [classes/:?]
+2021-10-27 15:46:38 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:47 - Closing Result Set
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:25 - Closing DB connection
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:13 - Create DB connection
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:36 - Closing Prepared Statement
+2021-10-27 15:46:39 [main] INFO  DataBaseConfig:25 - Closing DB connection

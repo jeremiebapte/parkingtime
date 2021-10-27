@@ -47,15 +47,15 @@ public class Ticket {
        return inTime;
     }
 
-    public LocalDateTime setInTime(LocalDateTime inTime) {
-        return inTime;
+    public void setInTime(LocalDateTime inTime) {
+      this.inTime = inTime;
     }
 
     public LocalDateTime getOutTime() {
         return outTime;
     }
 
-    public LocalDateTime setOutTime(LocalDateTime outTime) {
-        return outTime;
+    public void setOutTime(LocalDateTime outTime) {
+       this.outTime = outTime;
     }
 }

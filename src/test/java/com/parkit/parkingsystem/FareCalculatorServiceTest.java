@@ -34,7 +34,6 @@ public class FareCalculatorServiceTest {
     @Test
     public void calculateFareCar(){
         LocalDateTime inTime = LocalDateTime.now();
-        inTime.getHour();
         LocalDateTime outTime = LocalDateTime.now();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
 
