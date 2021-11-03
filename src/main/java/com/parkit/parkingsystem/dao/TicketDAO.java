@@ -87,4 +87,54 @@ public class TicketDAO {
         }
         return false;
     }
+
+    public int countInsideVehicle(String vehicleRegNumber, ParkingType vehicleType){
+        Connection con = null;
+        int entry = 0;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.COUNT_VEHICLE_REG_NUMBER);
+            ps.setString(1,vehicleRegNumber);
+            ps.setString(2,vehicleType.toString());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                entry = rs.getInt(1);
+
+            }
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+
+        }catch(Exception ex){
+            logger.error("Error count vehicle entry",ex);
+        }finally {
+            dataBaseConfig.closeConnection(con);
+            return entry;
+        }
+    }
+
+    public boolean verifyExistingVehicle(String vehicleRegNumber, ParkingType vehicleType){
+
+        Connection con = null;
+        int entry = 0;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.VERIFY_VEHICLE_REG_NUMBER);
+            ps.setString(1,vehicleRegNumber);
+            ps.setString(2,vehicleType.toString());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                entry = rs.getInt(1);
+
+            }
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+
+        }catch(Exception ex){
+            logger.error("Error verify vehicle",ex);
+        }finally {
+            dataBaseConfig.closeConnection(con);
+            return entry != 0;
+        }
+    }
+
 }

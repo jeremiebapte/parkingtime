@@ -11,6 +11,8 @@ public class Ticket {
     private LocalDateTime inTime;
     private LocalDateTime outTime;
 
+
+
     public int getId() {
         return id;
     }
@@ -59,4 +61,6 @@ public class Ticket {
     public void setOutTime(LocalDateTime outTime) {
        this.outTime = outTime;
     }
+
+
 }
