@@ -4,6 +4,9 @@ import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.integration.service.DataBasePrepareService;
+import com.parkit.parkingsystem.model.ParkingSpot;
+import com.parkit.parkingsystem.model.Ticket;
+import com.parkit.parkingsystem.service.FareCalculatorService;
 import com.parkit.parkingsystem.service.ParkingService;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.junit.jupiter.api.AfterAll;
@@ -12,7 +15,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.time.LocalDateTime;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -51,7 +58,13 @@ public class ParkingDataBaseIT {
     public void testParkingACar(){
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processIncomingVehicle();
-        //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
+        Ticket ticket = ticketDAO.getTicket("ABCDEF");
+        assertNotNull(ticket,"the ticket get from DB is not null");
+        assertNotNull(ticket.getInTime(),"the ticket in-time is not null");
+        assertNull(ticket.getOutTime(),"the ticket out-time is null");
+        assertEquals(0.0,ticket.getPrice(),"the price at the entry is 0");
+        ParkingSpot parkingSpot = ticket.getParkingSpot();
+        assertFalse(parkingSpot.isAvailable(),"the parking becomes not available");
     }
 
     @Test
@@ -59,6 +72,11 @@ public class ParkingDataBaseIT {
         testParkingACar();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processExitingVehicle();
+        Ticket ticket = ticketDAO.getTicket("ABCDEF");
+
+
+
+
         //TODO: check that the fare generated and out time are populated correctly in the database
     }
 

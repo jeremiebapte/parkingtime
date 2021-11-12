@@ -16,6 +16,13 @@ public class ParkingSpotDAO {
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    public ParkingSpotDAO(DataBaseConfig dataBaseConfig) {
+        this.dataBaseConfig = dataBaseConfig;
+    }
+
+    public ParkingSpotDAO() {
+    }
+
     public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result=-1;
@@ -36,6 +43,7 @@ public class ParkingSpotDAO {
         }
         return result;
     }
+    //TODO créer methode getParking(). mettre à jour sa dispo, update et récupérer et s'assurer que la dispo est mise à jour dans la DB.
 
     public boolean updateParking(ParkingSpot parkingSpot){
         //update the availability for that parking slot

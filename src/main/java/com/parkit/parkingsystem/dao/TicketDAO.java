@@ -15,6 +15,12 @@ import java.sql.Timestamp;
 
 
 public class TicketDAO {
+    public TicketDAO(DataBaseConfig dataBaseConfig) {
+        this.dataBaseConfig = dataBaseConfig;
+    }
+
+    public TicketDAO() {
+    }
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
@@ -136,5 +142,7 @@ public class TicketDAO {
             return entry != 0;
         }
     }
+
+    // TODO save ticket() : faire getTicket() avec num vehicule, s'assurer getTicket()
 
 }

@@ -9,7 +9,15 @@ import java.time.Duration;
 
 public class FareCalculatorService  {
 
-      private TicketDAO ticketDAO = new TicketDAO();
+      private TicketDAO ticketDAO;
+
+    public FareCalculatorService() {
+        this.ticketDAO = new TicketDAO();
+    }
+
+    public FareCalculatorService(TicketDAO ticketDAO) {
+        this.ticketDAO = ticketDAO;
+    }
 
     public void calculateFare(Ticket ticket){
         if( (ticket.getOutTime() != null) && (ticket.getOutTime().isBefore(ticket.getInTime())) ){

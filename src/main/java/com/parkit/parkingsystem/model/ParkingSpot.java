@@ -38,6 +38,15 @@ public class ParkingSpot {
     }
 
     @Override
+    public String toString() {
+        return "ParkingSpot{" +
+                "number=" + number +
+                ", parkingType=" + parkingType +
+                ", isAvailable=" + isAvailable +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
