@@ -38,12 +38,14 @@ public class TicketDAO {
             ps.setDouble(3, ticket.getPrice());
             ps.setTimestamp(4,Timestamp.valueOf(ticket.getInTime()));
             ps.setTimestamp(5, (ticket.getOutTime() == null)?null: (Timestamp.valueOf(ticket.getOutTime())));
-            return ps.execute();
+             ps.execute();
+             return  true;
         }catch (Exception ex){
             logger.error("Error fetching next available slot",ex);
+            return false;
         }finally {
             dataBaseConfig.closeConnection(con);
-            return false;
+
         }
     }
 
