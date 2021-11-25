@@ -1,3 +1,7 @@
+/**
+ * Classe permettant de construire un Ticket.
+ * Getter et Setter d'un ticket.
+ */
 package com.parkit.parkingsystem.model;
 
 import java.time.LocalDateTime;
@@ -13,7 +17,7 @@ public class Ticket {
 
 
 
-    public int getId() {
+    public final int getId() {
         return id;
     }
 
@@ -21,7 +25,7 @@ public class Ticket {
         this.id = id;
     }
 
-    public ParkingSpot getParkingSpot() {
+    public final ParkingSpot getParkingSpot() {
         return parkingSpot;
     }
 
@@ -29,7 +33,7 @@ public class Ticket {
         this.parkingSpot = parkingSpot;
     }
 
-    public String getVehicleRegNumber() {
+    public final String getVehicleRegNumber() {
         return vehicleRegNumber;
     }
 
@@ -37,7 +41,7 @@ public class Ticket {
         this.vehicleRegNumber = vehicleRegNumber;
     }
 
-    public double getPrice() {
+    public final double getPrice() {
         return price;
     }
 
@@ -46,7 +50,7 @@ public class Ticket {
 
     }
 
-    public LocalDateTime getInTime() {
+    public final LocalDateTime getInTime() {
        return inTime;
     }
 
@@ -54,7 +58,7 @@ public class Ticket {
       this.inTime = inTime;
     }
 
-    public LocalDateTime getOutTime() {
+    public final LocalDateTime getOutTime() {
         return outTime;
     }
 

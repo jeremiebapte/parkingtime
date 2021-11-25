@@ -1,3 +1,6 @@
+/**
+ * classe avec les constantes des prix/heure et par type de véhicule
+ */
 package com.parkit.parkingsystem.constants;
 
 public class Fare {

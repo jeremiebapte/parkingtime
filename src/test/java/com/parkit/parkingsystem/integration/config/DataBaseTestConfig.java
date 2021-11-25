@@ -51,3 +51,4 @@ public class DataBaseTestConfig extends DataBaseConfig {
         }
     }
 }
+//TODO faire le dossier resources comme dans main.

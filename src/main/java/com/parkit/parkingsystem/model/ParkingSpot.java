@@ -1,3 +1,6 @@
+/**
+ * Classe permettant d'avoir une place de parking PARKINGSPOT
+ */
 package com.parkit.parkingsystem.model;
 
 import com.parkit.parkingsystem.constants.ParkingType;
@@ -7,7 +10,7 @@ public class ParkingSpot {
     private ParkingType parkingType;
     private boolean isAvailable;
 
-    public ParkingSpot(int number, ParkingType parkingType, boolean isAvailable) {
+    public ParkingSpot(final int number, final ParkingType parkingType,final boolean isAvailable) {
         this.number = number;
         this.parkingType = parkingType;
         this.isAvailable = isAvailable;
@@ -47,7 +50,7 @@ public class ParkingSpot {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParkingSpot that = (ParkingSpot) o;
