@@ -29,6 +29,11 @@ public class ParkingService {
 
     }
 
+    /**
+     * Cette méthode est le processus d'entrée d'un véhicule dans le parking
+     * Elle vérifie si le véhicule est deja présent dans le parking
+     * elle met a jour la dispo de la place de parking attribuée
+     */
     public void processIncomingVehicle() {
         try {
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -63,7 +68,11 @@ public class ParkingService {
         }
     }
 
-
+    /**
+     * Cette méthode récupère la plaque d'immatriculation inscrite par l'utilisateur
+     * @return la plaque d'immatriculation
+     * @throws Exception
+     */
     private String getVehichleRegNumber() throws Exception {
 
         System.out.println("Please type the vehicle registration number and press enter key");
@@ -90,6 +99,10 @@ public class ParkingService {
         return parkingSpot;
     }
 
+    /**
+     * Cette méthode recupere le type du véhicule entrant dans le parking
+     * @return le type du véhicule
+     */
     private ParkingType getVehichleType() {
         System.out.println("Please select vehicle type from menu");
         System.out.println("1 CAR");
@@ -109,6 +122,12 @@ public class ParkingService {
         }
     }
 
+    /**
+     * Cette méthode est le processus de sortie d'un véhicule dans le parking
+     * elle recupère le ticket
+     * elle calcule le montant a régler
+     * elle met a jour la disponibilité de la place de parking
+     */
     public void processExitingVehicle() {
         try {
             String vehicleRegNumber = getVehichleRegNumber();

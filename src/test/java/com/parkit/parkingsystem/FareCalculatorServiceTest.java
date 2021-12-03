@@ -1,6 +1,7 @@
 package com.parkit.parkingsystem;
 
 
+import com.google.inject.Inject;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.dao.TicketDAO;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -34,10 +36,6 @@ public class FareCalculatorServiceTest {
     @BeforeEach
     private void setUp() {
         fareCalculatorService = new FareCalculatorService();
-    }
-
-    @BeforeEach
-    private void setUpPerTest() {
         ticket = new Ticket();
     }
 
@@ -50,6 +48,7 @@ public class FareCalculatorServiceTest {
         LocalDateTime inTime = LocalDateTime.now().minusHours(1);
         LocalDateTime outTime = LocalDateTime.now();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        fareCalculatorService = new FareCalculatorService(ticketDAO);
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
@@ -171,7 +170,7 @@ public class FareCalculatorServiceTest {
     }
     @Test
     public void calculateFareRecurrentCar(){
-        when(ticketDAO.countInsideVehicle(anyString(),any(ParkingType.class))).thenReturn(6);
+        when(ticketDAO.countInsideVehicle("ABC",ParkingType.CAR)).thenReturn(6);
         fareCalculatorService = new FareCalculatorService(ticketDAO);
         LocalDateTime inTime = LocalDateTime.now().minusHours(1);
         LocalDateTime outTime = LocalDateTime.now();

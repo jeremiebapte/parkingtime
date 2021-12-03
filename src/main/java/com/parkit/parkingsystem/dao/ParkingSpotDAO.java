@@ -1,7 +1,4 @@
-/**
- * Classe permettan de communiquer avec la base de données afin d'avoir une place de parking dispo
- * et de mettre a jour sa dsponibilité.
- */
+
 package com.parkit.parkingsystem.dao;
 
 import com.parkit.parkingsystem.config.DataBaseConfig;
@@ -15,8 +12,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+/**
+ * Classe permettant de communiquer avec la base de données afin d'avoir une place de parking dispo
+ * et de mettre a jour sa dsponibilité.
+ */
 
 public class ParkingSpotDAO {
+
     private static final Logger LOGGER = LogManager.getLogger("ParkingSpotDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
@@ -28,6 +30,12 @@ public class ParkingSpotDAO {
     public ParkingSpotDAO() {
     }
 
+    /**
+     * Cette méthode permet d'avoir la prochaine place de parking disponible
+     * afin d'indiquer a l'utilisateur la place a laquelle il doit se garer
+     * @param parkingType
+     * @return result qui est la place de parking a rejoindre
+     */
     public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result = -1;
@@ -37,20 +45,28 @@ public class ParkingSpotDAO {
             ps.setString(1, parkingType.toString());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                result = rs.getInt(1);;
+                result = rs.getInt(1);
+                ;
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
-        } catch (Exception ex) {
-           LOGGER.error("Error fetching next available slot", ex);
+
+        }catch (RuntimeException e){
+            throw e;
+        } catch (Exception e) {
+           LOGGER.error("Error fetching next available slot", e);
         } finally {
             dataBaseConfig.closeConnection(con);
         }
         return result;
     }
-    //TODO créer methode getParking(). mettre à jour sa dispo, update et récupérer et s'assurer que la dispo est mise à jour dans la DB.
 
-    public boolean updateParking (final ParkingSpot parkingSpot) {
+    /**
+     * Cette methode de type booléen indique la disponibilité ou non d'une place de parking
+     * @param parkingSpot
+     * @return
+     */
+    public boolean updateParking ( ParkingSpot parkingSpot) {
         //update the availability for that parking slot
         Connection con = null;
         PreparedStatement ps = null;
@@ -62,8 +78,11 @@ public class ParkingSpotDAO {
             int updateRowCount = ps.executeUpdate();
             dataBaseConfig.closePreparedStatement(ps);
             return (updateRowCount == 1);
-        } catch (Exception ex) {
-            LOGGER.error("Error updating parking info", ex);
+
+        } catch (RuntimeException e){
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error("Error updating parking info", e);
             return false;
         } finally {
             if (ps != null) {

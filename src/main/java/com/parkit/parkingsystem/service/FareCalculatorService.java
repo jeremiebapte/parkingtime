@@ -1,8 +1,4 @@
-/**
- * Classe de calcul des prix pour ParkingSytem.
- * Cette classe prend en compte les promotions et offres du service.
- *
- */
+
 package com.parkit.parkingsystem.service;
 
 import com.parkit.parkingsystem.constants.Fare;
@@ -10,6 +6,11 @@ import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
 
 import java.time.Duration;
+/**
+ * Classe de calcul des prix pour ParkingSytem.
+ * Cette classe prend en compte les promotions et offres du service.
+ *
+ */
 
 
 public class FareCalculatorService  {
@@ -20,10 +21,14 @@ public class FareCalculatorService  {
         this.ticketDAO = new TicketDAO();
     }
 
-    public FareCalculatorService(final TicketDAO dao) {
+    public FareCalculatorService( TicketDAO dao) {
         this.ticketDAO = dao;
     }
 
+    /**
+     * Cette méthode calcule la durée pendant laquelle le véhicule est resté stationné
+     * @param ticket
+     */
     public void calculateFare(final Ticket ticket) {
         if ((ticket.getOutTime() != null) && (ticket.getOutTime()
                 .isBefore(ticket.getInTime()))) {
@@ -50,6 +55,7 @@ public class FareCalculatorService  {
                this.processCalculationForCar(duration, countvehicle, ticket);
                 break;
             }
+
             case BIKE: {
                 this.processeCalculationForBike(duration, countvehicle, ticket);
                 break;
@@ -59,6 +65,15 @@ public class FareCalculatorService  {
 
 
     }
+
+    /**
+     * Cette methode permet de calculer le montant à régler lors de la sortie du parking pour une voiture
+     * elle prend en compte le temps passé dans le parking, applique une réduction si il y a récurrence et
+     * donne le montant à régler
+     * @param duration
+     * @param countvehicle
+     * @param ticket
+     */
     private void processCalculationForCar(
             final double duration, final int countvehicle,
             final Ticket ticket) {
@@ -86,6 +101,14 @@ public class FareCalculatorService  {
 
 
     }
+    /**
+     * Cette methode permet de calculer le montant à régler lors de la sortie du parking pour une moto
+     * elle prend en compte le temps passé dans le parking, applique une réduction si il y a récurrence et
+     * donne le montant à régler
+     * @param duration
+     * @param countvehicle
+     * @param ticket
+     */
     private void processeCalculationForBike(
             final double duration, final int countvehicle,
             final Ticket ticket) {

@@ -1,5 +1,7 @@
 /**
  * classe avec les constantes des prix/heure et par type de véhicule
+ *
+ * @see com.parkit.parkingsystem.service.FareCalculatorService
  */
 package com.parkit.parkingsystem.constants;
 
