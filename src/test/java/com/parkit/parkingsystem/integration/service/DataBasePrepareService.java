@@ -11,6 +11,7 @@ public class DataBasePrepareService {
     public void clearDataBaseEntries(){
         Connection connection = null;
         try{
+            System.out.println("MESSAGE***********************************************");
             connection = dataBaseTestConfig.getConnection();
 
             //set parking entries to available
@@ -18,6 +19,7 @@ public class DataBasePrepareService {
 
             //clear ticket entries;
             connection.prepareStatement("truncate table ticket").execute();
+            System.out.println("***************************MESSAGE**********************");
 
         }catch(Exception e){
             e.printStackTrace();
